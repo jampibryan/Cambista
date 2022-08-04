@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreVenta;
+use App\Models\Venta;
 use Illuminate\Http\Request;
 
 class VentasController extends Controller
@@ -13,7 +15,9 @@ class VentasController extends Controller
      */
     public function index()
     {
-        //
+        $ventas = Venta::all();
+
+        return view('Ventas.index', compact('ventas'));
     }
 
     /**
@@ -23,7 +27,7 @@ class VentasController extends Controller
      */
     public function create()
     {
-        //
+        return view('Ventas.create');
     }
 
     /**
@@ -32,9 +36,11 @@ class VentasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreVenta $request)
     {
-        //
+        $venta = Venta::create($request->all());
+
+        return redirect()->route('ventas.index');
     }
 
     /**
@@ -54,9 +60,9 @@ class VentasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Venta $venta)
     {
-        //
+        return view ('Ventas.edit', compact('venta'));
     }
 
     /**
@@ -66,9 +72,11 @@ class VentasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreVenta $request, Venta $venta)
     {
-        //
+        $venta->update($request->all());
+        
+        return redirect()->route('ventas.index');
     }
 
     /**
@@ -77,8 +85,9 @@ class VentasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Venta $venta)
     {
-        //
+        $venta->delete();
+        return redirect()->route('ventas.index');
     }
 }

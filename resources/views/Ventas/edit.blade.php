@@ -1,28 +1,31 @@
-
 @extends('adminlte::page')
 
 @section('title', 'Sistema_Cambista')
 
 @section('content_header')
-    <h1>Registro de Compra</h1>
+    <h1>Editar Ventas</h1>
 @stop
 
 @section('content')
-
-    <form action="{{ route('compras.store') }}" method="post">
+    <form action="{{ route('ventas.update', $venta) }}" method="post">
         @csrf
+
+        @method('put')
+
 
         <div class="mb-3">
             <label for="dni" class="form-label">DNI</label>
-            <input id="dni" name="dni" type="number" class="form-control" tabindex="1" max_age="8" value="{{ old('dni') }}">
+            <input id="dni" name="dni" type="text" class="form-control" tabindex="1"
+                value="{{ old('dni', $venta->dni) }}">
         </div>
         @error('dni')
             <small>*{{ $message }}</small>
         @enderror
 
+
         <select name="tipoMoneda" class="form-control">
             <option disabled selected>Tipo de moneda</option>
-            <option value="dolar">Dólar</option>
+            <option value="dolar">Dolar</option>
             <option value="euro">Euro</option>
         </select>
         <br>
@@ -31,17 +34,18 @@
             <small>*{{ $message }}</small>
         @enderror
 
+
         <div class="mb-3">
-            <label for="montoComprar" class="form-label">Monto a comprar</label>
-            <input id="montoComprar" name="montoComprar" type="number" class="form-control" tabindex="2"
-                value="{{ old('montoComprar') }}">
+            <label for="montoVender" class="form-label">MONTO MONEDA</label>
+            <input id="montoVender" name="montoVender" type="text" class="form-control" tabindex="2"
+                value="{{ old('montoVender', $venta->montoVender) }}">
         </div>
-        @error('montoComprar')
+        @error('montoVender')
             <small>*{{ $message }}</small>
         @enderror
 
-        <a href="{{ route('compras.index') }}" class="btn btn-danger">Cancelar</a>
-        <button type="submit" class="btn btn-dark">Registrar</button>
+        <a href="{{ route('ventas.index') }}" class="btn btn-danger">Cancelar</a>
+        <button type="submit" class="btn btn-dark">Crear</button>
     </form>
 
 @stop

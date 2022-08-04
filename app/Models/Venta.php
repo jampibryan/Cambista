@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Venta extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['dni', 'tipoMoneda', 'montoVender'];
+    // public $timestamps = true;
 }

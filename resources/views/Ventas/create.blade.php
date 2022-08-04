@@ -4,12 +4,12 @@
 @section('title', 'Sistema_Cambista')
 
 @section('content_header')
-    <h1>Registro de Compra</h1>
+    <h1>Registro de Venta</h1>
 @stop
 
 @section('content')
 
-    <form action="{{ route('compras.store') }}" method="post">
+    <form action="{{ route('ventas.store') }}" method="post">
         @csrf
 
         <div class="mb-3">
@@ -32,15 +32,15 @@
         @enderror
 
         <div class="mb-3">
-            <label for="montoComprar" class="form-label">Monto a comprar</label>
-            <input id="montoComprar" name="montoComprar" type="number" class="form-control" tabindex="2"
-                value="{{ old('montoComprar') }}">
+            <label for="montoVender" class="form-label">Monto a vender</label>
+            <input id="montoVender" name="montoVender" type="number" class="form-control" tabindex="2"
+                value="{{ old('montoVender') }}">
         </div>
-        @error('montoComprar')
+        @error('montoVender')
             <small>*{{ $message }}</small>
         @enderror
 
-        <a href="{{ route('compras.index') }}" class="btn btn-danger">Cancelar</a>
+        <a href="{{ route('ventas.index') }}" class="btn btn-danger">Cancelar</a>
         <button type="submit" class="btn btn-dark">Registrar</button>
     </form>
 

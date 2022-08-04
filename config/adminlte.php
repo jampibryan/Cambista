@@ -261,7 +261,7 @@ return [
             'label_color' => 'success',
         ],
         [
-            'text'        => 'Compra',
+            'text'        => 'Compras',
             'url'         => 'sistema/compras',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 4,

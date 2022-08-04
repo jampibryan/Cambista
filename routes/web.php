@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\ComprasController;
+use App\Http\Controllers\VentasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,3 +34,5 @@ Route::middleware([
 Route::resource('/sistema/clientes', ClientesController::class);
 
 Route::resource('/sistema/compras', ComprasController::class);
+
+Route::resource('/sistema/ventas', VentasController::class);
