@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\ComprasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,3 +31,5 @@ Route::middleware([
 
 
 Route::resource('/sistema/clientes', ClientesController::class);
+
+Route::resource('/sistema/compras', ComprasController::class);
