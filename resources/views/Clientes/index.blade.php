@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Tipo de Cambio')
+@section('title', 'Sistema_Cambista')
 
 @section('content_header')
     <h1>CLIENTES REGISTRADOS</h1>
@@ -41,7 +41,7 @@
                             <form action="{{ route('clientes.destroy', $cliente) }}" method="post">
                                 @csrf
                                 @method('delete')
-                                <button class="bg-black p-2 text-white">Eliminar</button>
+                                <button class="bg-black p-2 text-white mt-2">Eliminar</button>
                             </form>
                         </td>
 

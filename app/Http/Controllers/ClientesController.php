@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCliente;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,7 @@ class ClientesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCliente $request)
     {
         $cliente = Cliente::create($request->all());
 
@@ -59,7 +60,7 @@ class ClientesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Cliente $cliente)
     {
         return view ('Clientes.edit', compact('cliente'));
 
@@ -72,7 +73,7 @@ class ClientesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(StoreCliente $request, Cliente $cliente)
     {
         $cliente->update($request->all());
         
